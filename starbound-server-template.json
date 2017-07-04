@@ -23,6 +23,11 @@
   }],
   "provisioners": [
       {
+        "type": "file",
+        "source": "STEAM_DEB_FILE",
+        "destination": "/home/ubuntu/steam.dat"
+      },
+      {
         "type": "shell",
         "script": "bin/install-steamcmd.sh"
       }

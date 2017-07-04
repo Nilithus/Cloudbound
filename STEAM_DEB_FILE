@@ -1,0 +1,15 @@
+Name: steam/license
+Template: steam/license
+Value:
+Owners: steam
+Flags: seen
+
+Name: steam/purge
+Template: steam/purge
+Owners: steam
+
+Name: steam/question
+Template: steam/question
+Value: I AGREE
+Owners: steam
+Flags: seen

@@ -25,8 +25,7 @@ I started playing starbound and thought it'd be fun to run a dedicated server an
 This seemed like a resonable side project to expirment and learn packer.
 
 ## Todo
-- [ ] install steamcmd without prompting
+- [x] install steamcmd without prompting
 - [ ] login with steam account (steamguard?!)
 - [ ] Install starbound dedicated server
 - [ ] create systemd unit file to manage starbound server
-- [ ] profit
