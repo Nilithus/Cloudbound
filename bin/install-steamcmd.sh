@@ -36,12 +36,9 @@ STEAM_DEB_CONF_FILE=/var/cache/debconf/steam.dat
 sudo touch $STEAM_DEB_CONF_FILE
 sudo chown root:root $STEAM_DEB_CONF_FILE
 sudo chmod 644 $STEAM_DEB_CONF_FILE
-sudo cat $STEAM_DEB_CONF > $STEAM_DEB_CONF_FILE
+echo $STEAM_DEB_CONF | sudo tee $STEAM_DEB_CONF_FILE
 
-export DEBIAN_FRONTEND=noninteractive
-export DEBCONF_DB_FALLBACK=$STEAM_DEB_CONF_FILE
-
-sudo apt-get install -y steamcmd
-
-su - steam
+sudo DEBIAN_FRONTEND=noninteractive \
+&& DEBCONF_DB_FALLBACK=$STEAM_DEB_CONF_FILE \
+&& apt-get install -y steamcmd
 
