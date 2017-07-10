@@ -1,0 +1,6 @@
+@NoPromptForPassword 1
+login
+
+force_install_dir /home/steam/starbound
+app_update 211820
+quit

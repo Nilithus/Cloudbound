@@ -24,12 +24,26 @@
   "provisioners": [
       {
         "type": "file",
-        "source": "STEAM_DEB_FILE",
+        "source": "config/STEAM_DEB_FILE",
         "destination": "/home/ubuntu/steam.dat"
       },
       {
+        "type": "file",
+        "source": "config/starbound-server.service",
+        "destination": "/home/ubuntu/starbound-server.service"
+      },
+      {
+        "type": "file",
+        "source": "config/starbound-steamcmd-script.txt",
+        "destination": "/home/ubuntu/starbound-steamcmd-script.txt"
+      },
+      {
         "type": "shell",
-        "script": "bin/install-steamcmd.sh"
+        "script": "bin/install-steamcmd.sh",
+        "environment_vars": [
+          "STEAM_USERNAME={{user `steam_name`}}",
+          "STEAM_PASSWORD={{user `steam_password`}}"
+        ]
       }
   ]
 }
