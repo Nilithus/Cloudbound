@@ -39,3 +39,4 @@ This seemed like a resonable side project to expirment and learn packer.
 - [ ] create a hyper-v packer build
 - [ ] packer put environment vars doesn't interact well with special characters ($) which could be in passwords
 - [ ] parameterize allow users to install any of the steam dedicated servers factorio ect...
+- [ ] Allow specifying the aws region right now only does us-east-1

@@ -1,13 +1,16 @@
 {
     "variables": {
         "aws_access_key": "",
-        "aws_secret_key": ""
+        "aws_secret_key": "",
+        "steam_name": null,
+        "steam_password": null,
+        "amazon_region": "us-east-1"
     },
     "builders": [{
     "type": "amazon-ebs",
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
-    "region": "us-east-1",
+    "region": "{{user `amazon_region`}}",
     "source_ami_filter": {
       "filters": {
       "virtualization-type": "hvm",
@@ -19,7 +22,7 @@
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "packer-example {{timestamp}}"
+    "ami_name": "packer-starbound-server {{timestamp}}"
   }],
   "provisioners": [
       {

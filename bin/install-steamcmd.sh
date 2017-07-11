@@ -35,7 +35,7 @@ sudo chown steam:steam /home/steam/starbound-steamcmd-script.txt
 #install starbound server
 sudo -i -u steam /usr/games/steamcmd +runscript /home/steam/starbound-steamcmd-script.txt
 
-# set systemd to star starbound on boot
+# set systemd to start starbound on boot
 sudo mv /home/ubuntu/starbound-server.service /etc/systemd/system/starbound-server.service
 sudo systemctl daemon-reload
 sudo systemctl enable starbound-server
