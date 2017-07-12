@@ -15,11 +15,15 @@ There is a couple of gotchas in using [steamcmd](https://developer.valvesoftware
 3. Packer is setup to create an EC2 EBS backed AMI which means that if it runs successfully you'll have registered an ami to your account and created a volume snapshot of the root filesystem. **Packer does not manage AMI's** and each time you run and packer completes successfully a new EBS snapshot is created. Amazon charges for the storage of snapshots so just make sure you clean those up if don't want them hanging around. If you want to remove the ami you need to delete the snapshot and desregister the ami. Follow amazons guide to [deregistering AMI's](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html)
 4. You must disable steamguard for this to work.I **Highly recommend** that you do not use your regular steam account for server setup. 
 
+## Other notes
+This only deals with creating an ami that has the starbound server installed. It does not handle server configuration (though it provides some server config dist files to help you get started) or persisting save game state between server restarts on a seperate ebs volume. To get those things is where you start getting into using something like [terraform](https://www.terraform.io/) and have it spin up a server using the ami that this repo has created and then attaching persistent storage and configuring the server ect... You'd also have it setup security groups and key-pairs and all that jazz. So this not push button get starbound server. This is push button get starbound server ami. 
+
 ## How to run
 ```bash
 packer build \
 -var 'steam_name=<steam_username>' \
 -var 'steam_password=<steam_password>' \
+-var 'amazon_region=us-east1' \
 starbound-server-template.json
 ```
 
@@ -32,10 +36,8 @@ This seemed like a resonable side project to expirment and learn packer.
 - [x] login with steam account (steamguard?!)
 - [x] Install starbound dedicated server under steam user
 - [x] create systemd unit file to manage starbound server
-- [ ] move starbound save directories to persistent EBS volume
 - [ ] script cleanup (idempotent script or maybe just go full ansible)
-- [ ] allow configuring networking and ports
 - [ ] use [LinuxGSM](https://github.com/GameServerManagers/LinuxGSM) instead of steamcmd directly
 - [ ] create a hyper-v packer build
 - [ ] packer put environment vars doesn't interact well with special characters ($) which could be in passwords
-- [ ] parameterize allow users to install any of the steam dedicated servers factorio ect...
+- [x] Allow specifying the aws region right now only does us-east-1
