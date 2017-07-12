@@ -23,7 +23,7 @@ This only deals with creating an ami that has the starbound server installed. It
 packer build \
 -var 'steam_name=<steam_username>' \
 -var 'steam_password=<steam_password>' \
--var 'amazon_region=us-east1' \
+-var 'amazon_region=us-east-1' \
 starbound-server-template.json
 ```
 
